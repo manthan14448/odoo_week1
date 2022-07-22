@@ -6,11 +6,12 @@ class EstateProperty(models.Model):
     _name = "estate.property"
     _description = "Real state Property adding database"
     # Working fields
-    name = fields.Char(string="Property Name")
+    name = fields.Char(string="Property Name", required=True)
     description = fields.Text(string="Property Description")
     postcode = fields.Char(string="Property PostCode")
     date_availability = fields.Date(string="Propery Due Date")
-    expected_price = fields.Float(string="Property Expected Selling Price")
+    expected_price = fields.Float(
+        string="Property Expected Selling Price", required=True)
     selling_price = fields.Float(string="Property Real Selling Price")
     bedrooms = fields.Integer(string="Property Totel Bedrooms")
     living_area = fields.Integer(string="Property Living area")
