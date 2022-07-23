@@ -11,5 +11,5 @@
     ],
     'application': True,
     'instaliable': True,
-    'auto-install': False
+    'auto-install': False,
 }
