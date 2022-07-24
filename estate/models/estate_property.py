@@ -1,4 +1,6 @@
+from copy import copy
 import string
+from typing_extensions import Self
 from odoo import models, fields
 
 
@@ -9,10 +11,12 @@ class EstateProperty(models.Model):
     name = fields.Char(string="Estate Property Name", required=True)
     description = fields.Text(string="Property Description")
     postcode = fields.Char(string="Property PostCode")
-    date_availability = fields.Date(string="Propery Due Date")
+    date_availability = fields.Date(
+        string="Propery Date of Availability", copy=False)
     expected_price = fields.Float(
         string="Property Expected Selling Price", required=True)
-    selling_price = fields.Float(string="Property Real Selling Price")
+    selling_price = fields.Float(
+        string="Property Real Selling Price", copy=False, readonly=True)
     bedrooms = fields.Integer(string="Property Totel Bedrooms")
     living_area = fields.Integer(string="Property Living area")
     facades = fields.Integer(string="Property facades")
