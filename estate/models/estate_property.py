@@ -26,3 +26,4 @@ class EstateProperty(models.Model):
     garden_area = fields.Integer(string="Property Has Gardern area Yes or No")
     garden_orientation = fields.Selection([('North', 'Garden is North side'), ('South', 'Garden is South side'), (
         'East', 'Garden is East side'), ('West', 'Garden is West side')], string="Property Garden Orientation")
+    active = fields.Boolean(string="Active")
