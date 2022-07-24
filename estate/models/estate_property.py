@@ -1,5 +1,6 @@
 from copy import copy
 from datetime import datetime
+from email.policy import default
 import string
 from typing_extensions import Self
 from odoo import models, fields
@@ -26,4 +27,4 @@ class EstateProperty(models.Model):
     garden_area = fields.Integer(string="Property Has Gardern area Yes or No")
     garden_orientation = fields.Selection([('North', 'Garden is North side'), ('South', 'Garden is South side'), (
         'East', 'Garden is East side'), ('West', 'Garden is West side')], string="Property Garden Orientation")
-    active = fields.Boolean(string="Active")
+    active = fields.Boolean(string="Active", default=False)
