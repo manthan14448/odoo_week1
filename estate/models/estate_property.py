@@ -12,12 +12,12 @@ class EstateProperty(models.Model):
     description = fields.Text(string="Property Description")
     postcode = fields.Char(string="Property PostCode")
     date_availability = fields.Date(
-        string="Propery Date of Availability", copy=False)
+        string="Propery Date of Availability", copy=False, default=datetime.today())
     expected_price = fields.Float(
         string="Property Expected Selling Price", required=True)
     selling_price = fields.Float(
         string="Property Real Selling Price", copy=False, readonly=True)
-    bedrooms = fields.Integer(string="Property Totel Bedrooms")
+    bedrooms = fields.Integer(string="Property Totel Bedrooms", default="2")
     living_area = fields.Integer(string="Property Living area")
     facades = fields.Integer(string="Property facades")
     garage = fields.Boolean(string="Property Has Garage Yes or No")
