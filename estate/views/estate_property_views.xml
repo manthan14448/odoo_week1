@@ -26,6 +26,10 @@
                 <field name="bedrooms"></field>
                 <field name="living_area"></field>
                 <field name="facades"></field>
+                <filter name="state" string="Available" domain="['|',('state', '=', 'New'),('state', '=', 'Offer Received')]" />
+                <group name="Postalcodegroup" string="string">
+                    <filter name="state" string="Postalcode" context="{'group_by': 'postcode'}" />
+                </group>
             </search>
         </field>
     </record>
