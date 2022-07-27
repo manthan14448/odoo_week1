@@ -45,6 +45,7 @@
                     <sheet>
                         <group>
                             <group class="oe_left">
+                                <field name="property_type_id" string="Property Type " />
                                 <field name="postcode" string="Postcode" />
                                 <field name="date_availability" string="Available From" />
                             </group>
@@ -67,6 +68,12 @@
                                 <field name="garden" string="Garden" />
                                 <field name="garden_area" string="Garden Area" />
                                 <field name="garden_orientation" string="Garden Orientation" />
+                            </group>
+                        </page>
+                        <page name="buyerDetail" string="Other Info">
+                            <group>
+                                <field name="description" string="Salesman" />
+                                <field name="bedrooms" string="Buyer" />
                             </group>
                         </page>
                     </notebook>

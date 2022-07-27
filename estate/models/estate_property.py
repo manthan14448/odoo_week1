@@ -11,6 +11,8 @@ class EstateProperty(models.Model):
     _description = "Real state Property adding database"
     # Working fields
     name = fields.Char(string="Estate Property Name", required=True)
+    property_type_id = fields.Many2one(
+        "estate.property.type", string="Property_type_id")
     description = fields.Text(string="Property Description")
     postcode = fields.Char(string="Property PostCode")
     date_availability = fields.Date(
