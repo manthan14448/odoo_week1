@@ -12,10 +12,10 @@
             <tree string="doctor">
                 <field name="number" />
                 <field name="name" />
-                <field name="degree" />
                 <field name="speciality" />
-
+                <field name="degree_info" widget="many2many_tags" />
             </tree>
+
         </field>
     </record>
     <record id="doctor_details_view_form" model="ir.ui.view">
@@ -27,21 +27,12 @@
                     <group>
                         <field name="number" />
                         <field name="name" />
-                        <field name="degree" />
                         <field name="speciality" />
-                        <field name="degree_info" widget="many2many_tags">
-                            <tree editable="bottom">
-                                <field name="degrees" string="Degree Name" />
-                            </tree>
-                            <form>
-                                <group>
-                                    <field name="degrees" string="Degree Name" />
-                                </group>
-                            </form>
-                        </field>
+                        <field name="degree_info" widget="many2many_tags"></field>
                     </group>
                 </sheet>
             </form>
+
         </field>
     </record>
 </odoo>

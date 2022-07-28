@@ -9,8 +9,6 @@ class Doctor(models.Model):
 
     _rec_name = "name"
     name = fields.Many2one("res.partner", string="Doctor Name", required=True)
-    degree = fields.Char(string="Doctor Degree Info",
-                         name="Degree", required=True)
     degree_info = fields.Many2many("doctor.degree")
     speciality = fields.Selection(
         [('ear', 'Ear'), ('nose', 'Nose'), ('brain', 'Brain')], name="Speciality", required=True)
@@ -28,6 +26,6 @@ class Doctor(models.Model):
 class Doctor_degree(models.Model):
     _name = "doctor.degree"
     _description = "This table contain doctor degree"
-
-    degrees = fields.Char(string="Doctor Degree Info",
-                          name="Degree", required=True)
+    _rec_name = "name"
+    name = fields.Char(string="Doctor Degree Info",
+                       name="Degree", required=True)
