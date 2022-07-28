@@ -1,0 +1,5 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_doctor_details,access_doctor_details,model_doctor_details,base.group_user,1,1,1,1 
+access_patient_details,access_patient_details,model_patient_details,base.group_user,1,1,1,1 
+access_patient_appoinmet,access_patient_appoinmet,model_patient_appoinmet,base.group_user,1,1,1,1
+access_doctor_degree,access_doctor_degree,model_doctor_degree,base.group_user,1,1,1,1

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="test_hospital_root" name="Hospital">
+        <menuitem id="test_first_level_doctor_menu" name="Doctor Details" action="action_doctor_detail"></menuitem>
+        <menuitem id="test_first_level_patient_menu" name="Patient Details" action="action_patient_detail"></menuitem>
+    </menuitem>
+</odoo>
