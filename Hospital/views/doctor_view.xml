@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="action_doctor_detail" model="ir.actions.act_window">
+    <record id="action_doctor_detail_tag" model="ir.actions.act_window">
         <field name="name">Doctor_Detail view</field>
         <field name="res_model">doctor.details</field>
         <field name="view_mode">tree,form</field>

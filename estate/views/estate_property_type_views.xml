@@ -12,7 +12,7 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                    <h1 style="color:blue;">
+                    <h1 style="color:red;">
                         <field name="name" string="Property Type" />
                         <hr />
                     </h1>

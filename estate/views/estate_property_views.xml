@@ -72,8 +72,8 @@
                         </page>
                         <page name="buyerDetail" string="Other Info">
                             <group>
-                                <field name="description" string="Salesman" />
-                                <field name="bedrooms" string="Buyer" />
+                                <field name="salesperson" string="Salesman" />
+                                <field name="buyer" string="Buyer" />
                             </group>
                         </page>
                     </notebook>

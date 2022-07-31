@@ -10,11 +10,11 @@ class EstateProperty(models.Model):
     _name = "estate.property"
     _description = "Real state Property adding database"
     # Working fields
-    name = fields.Char(string="Estate Property Name", required=True)
+    name = fields.Text(string="Estate Property Name", required=True)
     property_type_id = fields.Many2one(
         "estate.property.type", string="Property_type_id")
     description = fields.Text(string="Property Description")
-    postcode = fields.Char(string="Property PostCode")
+    postcode = fields.Text(string="Property PostCode")
     date_availability = fields.Date(
         string="Propery Date of Availability", copy=False, default=datetime.today())
     expected_price = fields.Float(
@@ -32,3 +32,6 @@ class EstateProperty(models.Model):
     active = fields.Boolean(string="Active", default=False)
     state = fields.Selection(
         [('New', 'New'), ('Offer Received', 'Offer Received'), ('Offer Accepted', 'Offer Accepted'), ('Sold', 'Sold'), ('Canceled', 'Canceled')], required=True, copy=False, default='New')
+    salesperson = fields.Many2one('res.users', string='SalesMan',
+                                  index=True, tracking=True, default=lambda self: self.env.user)
+    buyer = fields.Many2one('res.users', string="Buyer Name", copy=False)
