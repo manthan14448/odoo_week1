@@ -42,6 +42,7 @@
                     <h1>
                         <field name="name" string="Title" />
                     </h1>
+                    <field name="tag_ids" widget="many2many_tags" />
                     <sheet>
                         <group>
                             <group class="oe_left">
