@@ -10,6 +10,7 @@ class EstateProperty(models.Model):
     _name = "estate.property"
     _description = "Real state Property adding database"
     # Working fields
+    _rec_name = "name"
     name = fields.Text(string="Estate Property Name", required=True)
     property_type_id = fields.Many2one(
         "estate.property.type", string="Property_type_id")
@@ -36,3 +37,4 @@ class EstateProperty(models.Model):
                                   index=True, tracking=True, default=lambda self: self.env.user)
     buyer = fields.Many2one('res.users', string="Buyer Name", copy=False)
     tag_ids = fields.Many2many('estate.property.tag')
+    offer_ids = fields.One2many('estate.property.offer', 'property_id')
