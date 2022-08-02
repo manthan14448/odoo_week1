@@ -28,6 +28,8 @@ class EstateProperty(models.Model):
     garage = fields.Boolean(string="Property Has Garage Yes or No")
     garden = fields.Boolean(string="Property Has Garden Yes or No")
     garden_area = fields.Integer(string="Property Has Gardern area Yes or No")
+    total_area = fields.Integer(
+        string="Totel Area", compute="compute_totel_area")
     garden_orientation = fields.Selection([('North', 'Garden is North side'), ('South', 'Garden is South side'), (
         'East', 'Garden is East side'), ('West', 'Garden is West side')], string="Property Garden Orientation")
     active = fields.Boolean(string="Active", default=False)
@@ -38,3 +40,7 @@ class EstateProperty(models.Model):
     buyer = fields.Many2one('res.users', string="Buyer Name", copy=False)
     tag_ids = fields.Many2many('estate.property.tag')
     offer_ids = fields.One2many('estate.property.offer', 'property_id')
+
+    def compute_totel_area(self):
+        for rec in self:
+            rec.total_area = self.living_area+self.garden_area
