@@ -40,7 +40,17 @@ class EstateProperty(models.Model):
     buyer = fields.Many2one('res.users', string="Buyer Name", copy=False)
     tag_ids = fields.Many2many('estate.property.tag')
     offer_ids = fields.One2many('estate.property.offer', 'property_id')
+    best_price = fields.Text(
+        string="Best Price", compute="compute_best_price")
 
+    # computed Methods
     def compute_totel_area(self):
         for rec in self:
             rec.total_area = self.living_area+self.garden_area
+
+    def compute_best_price(self):
+        maxval = []
+        for rec in self:
+            for i in rec.offer_ids:
+                maxval.append(i.price)
+        self.best_price = max(maxval) if len(maxval) > 0 else "No Offer"
