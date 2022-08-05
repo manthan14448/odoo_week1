@@ -3,7 +3,7 @@ from datetime import datetime
 from email.policy import default
 import string
 from typing_extensions import Self
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class EstateProperty(models.Model):
@@ -54,3 +54,12 @@ class EstateProperty(models.Model):
             for i in rec.offer_ids:
                 maxval.append(i.price)
         self.best_price = max(maxval) if len(maxval) > 0 else "No Offer"
+
+    @api.onchange('garden')
+    def _onchange_garden(self):
+        if(self.garden == True):
+            self.garden_area = 10
+            self.garden_orientation = "North"
+        else:
+            self.garden_area = ""
+            self.garden_orientation = ""
