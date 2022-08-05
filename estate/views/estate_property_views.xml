@@ -79,20 +79,23 @@
                                     <field name="price" string="Price" />
                                     <field name="partner_id" string="Partner" />
                                     <field name="status" string="Status" />
+                                    <field name="validity" />
+                                    <field name="date_deadline" />
                                 </tree>
                                 <form>
                                     <group>
-                                        <field name="price" string="Price" />
-                                        <field name="partner_id" string="Partner" />
-                                        <field name="status" string="Status" />
+                                        <field name="price" string=" Price" />
+                                        <field name="partner_id" string=" Partner" />
+                                        <field name="validity" string="Validity" />
+                                        <field name="status" string=" Status" />
                                     </group>
                                 </form>
                             </field>
                         </page>
-                        <page name="buyerDetail" string="Other Info">
+                        <page name="buyerDetail" string=" Other Info">
                             <group>
-                                <field name="salesperson" string="Salesman" />
-                                <field name="buyer" string="Buyer" />
+                                <field name="salesperson" string=" Salesman" />
+                                <field name="buyer" string=" Buyer" />
                             </group>
                         </page>
                     </notebook>
