@@ -34,7 +34,7 @@ class EstateProperty(models.Model):
         string="Totel Area", compute="compute_totel_area")
     garden_orientation = fields.Selection([('North', 'Garden is North side'), ('South', 'Garden is South side'), (
         'East', 'Garden is East side'), ('West', 'Garden is West side')], string="Property Garden Orientation")
-    active = fields.Boolean(string="Active", default=False)
+    # active = fields.Boolean(string="Active", default=True)
     state = fields.Selection(
         [('New', 'New'), ('Offer Received', 'Offer Received'), ('Offer Accepted', 'Offer Accepted'), ('Sold', 'Sold'), ('Canceled', 'Canceled')], required=True, copy=False, default='New')
     salesperson = fields.Many2one('res.users', string='SalesMan',
@@ -47,9 +47,9 @@ class EstateProperty(models.Model):
         string="Best Price", compute="compute_best_price")
 
     _sql_constraints = [
-        ('check_expected_price', 'CHECK(expected_price >= 0)',
+        ('check_expected_price', 'CHECK(expected_price >= 1.00)',
          "Expected Price Must be strickly Positive"),
-        ('check_selling_price', 'CHECK(selling_price >= 0)',
+        ('check_selling_price', 'CHECK(selling_price >= 1.00)',
          "Selling Price Must be strickly Positive")]
 
     # computed Methods
