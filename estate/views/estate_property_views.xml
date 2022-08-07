@@ -38,6 +38,10 @@
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="action_sold" type="object" string="SOLD" />
+                    <button name="action_cancel" type="object" string="CANCEL" />
+                </header>
                 <sheet>
                     <h1>
                         <field name="name" string="Title" />
@@ -46,6 +50,7 @@
                     <sheet>
                         <group>
                             <group class="oe_left">
+                                <field name="status" string="Status" />
                                 <field name="property_type_id" string="Property Type " />
                                 <field name="postcode" string="Postcode" />
                                 <field name="date_availability" string="Available From" />
@@ -78,9 +83,11 @@
                                 <tree>
                                     <field name="price" string="Price" />
                                     <field name="partner_id" string="Partner" />
-                                    <field name="status" string="Status" />
                                     <field name="validity" />
                                     <field name="date_deadline" />
+                                    <button name="action_status_accept" type="object" style="color:blue;" icon="fa-check" />
+                                    <button name="action_status_denied" type="object" style="color:red;" icon="fa-close" />
+                                    <field name="status" string=" Status" />
                                 </tree>
                                 <form>
                                     <group>

@@ -15,7 +15,7 @@ class Patient(models.Model):
     pre_condition = fields.Char(name="Pre conditions")
     Appoinment_ids = fields.One2many(
         "patient.appoinmet", 'Appoinment_id', string="Appoinments")
-    cals = fields.Text(String="Testing Fields")
+    cals = fields.Text(string="Testing Fields")
 
 
 class Patient_Appoinment(models.Model):

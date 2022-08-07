@@ -3,7 +3,7 @@ from email.policy import default
 import string
 from datetime import datetime, timedelta
 from tracemalloc import start
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class estate_property_offer(models.Model):
@@ -12,7 +12,7 @@ class estate_property_offer(models.Model):
 
     price = fields.Float(string="Price")
     status = fields.Selection(
-        [("accept", "Accepted"), ('refues', 'Refused')], copy=False)
+        [("accept", "Accepted"), ('refues', 'Refused')], store=True, copy=False, readonly=True)
     partner_id = fields.Many2one(
         'res.partner', string="Patner Name", required=True)
     property_id = fields.Many2one(
@@ -31,6 +31,32 @@ class estate_property_offer(models.Model):
                 end_date = date_1 + timedelta(days=day)
                 self.date_deadline = end_date
                 break
+
+    def action_status_accept(self):
+        Accepted_price = 0
+        Buyer_id = 0
+        for rec in self:
+            rec.status = "accept"
+            Accepted_price = rec.price
+            if rec.partner_id:
+                for i in rec.partner_id:
+                    Buyer_id = i.id
+            if Accepted_price != 0 and Buyer_id != 0:
+                for i in rec.property_id:
+                    i.selling_price = Accepted_price
+                    i.buyer = Buyer_id
+                    break
+        return True
+
+    def action_status_denied(self):
+        for rec in self:
+            rec.status = "refues"
+            Accepted_price = 0.0
+            for i in rec.property_id:
+                i.selling_price = Accepted_price
+                i.buyer = None
+                break
+        return True
         # start_date = datetime.now()
         # date_compute = datetime.datetime.strptime(start_date, "%m/%d/%y")
         # end_date = date_compute + datetime.timedelta(days=)

@@ -4,6 +4,7 @@ from email.policy import default
 import string
 from typing_extensions import Self
 from odoo import models, fields, api
+from odoo.exceptions import UserError
 
 
 class EstateProperty(models.Model):
@@ -12,6 +13,7 @@ class EstateProperty(models.Model):
     # Working fields
     _rec_name = "name"
     name = fields.Text(string="Estate Property Name", required=True)
+    status = fields.Char(default="Avaliable", readonly=True, store=True)
     property_type_id = fields.Many2one(
         "estate.property.type", string="Property_type_id")
     description = fields.Text(string="Property Description")
@@ -37,7 +39,8 @@ class EstateProperty(models.Model):
         [('New', 'New'), ('Offer Received', 'Offer Received'), ('Offer Accepted', 'Offer Accepted'), ('Sold', 'Sold'), ('Canceled', 'Canceled')], required=True, copy=False, default='New')
     salesperson = fields.Many2one('res.users', string='SalesMan',
                                   index=True, tracking=True, default=lambda self: self.env.user)
-    buyer = fields.Many2one('res.users', string="Buyer Name", copy=False)
+    buyer = fields.Many2one(
+        'res.partner', string="Buyer Name", index=True, tracking=True, copy=False)
     tag_ids = fields.Many2many('estate.property.tag')
     offer_ids = fields.One2many('estate.property.offer', 'property_id')
     best_price = fields.Text(
@@ -63,3 +66,21 @@ class EstateProperty(models.Model):
         else:
             self.garden_area = ""
             self.garden_orientation = ""
+
+    def action_sold(self):
+        for rec in self:
+            if rec.status == "Canceled":
+                raise UserError("Cancel Property Can't be Sold")
+                return True
+            rec.status = "Sold"
+            break
+        return True
+
+    def action_cancel(self):
+        for rec in self:
+            if rec.status == "Sold":
+                raise UserError("Sold Property Can't be Canceled")
+                return True
+            rec.status = "Canceled"
+            break
+        return True
