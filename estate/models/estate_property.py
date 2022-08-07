@@ -46,7 +46,14 @@ class EstateProperty(models.Model):
     best_price = fields.Text(
         string="Best Price", compute="compute_best_price")
 
+    _sql_constraints = [
+        ('check_expected_price', 'CHECK(expected_price >= 0)',
+         "Expected Price Must be strickly Positive"),
+        ('check_selling_price', 'CHECK(selling_price >= 0)',
+         "Selling Price Must be strickly Positive")]
+
     # computed Methods
+
     def compute_totel_area(self):
         for rec in self:
             rec.total_area = self.living_area+self.garden_area

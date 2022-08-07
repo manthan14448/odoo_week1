@@ -19,6 +19,9 @@ class estate_property_offer(models.Model):
         'estate.property', string="Patner id", required=True)
     validity = fields.Integer(string="Validity", default="7")
     date_deadline = fields.Date(compute="compute_date_deadline")
+    _sql_constraints = [
+        ('Offer_price', 'CHECK(price >= 0)',
+         "Offer Price Must be strickly Positive")]
 
     def compute_date_deadline(self):
         date_1 = ""
