@@ -4,7 +4,7 @@ from email.policy import default
 import string
 from typing_extensions import Self
 from odoo import models, fields, api
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError,ValidationError
 
 
 class EstateProperty(models.Model):
@@ -52,8 +52,18 @@ class EstateProperty(models.Model):
         ('check_selling_price', 'CHECK(selling_price >= 1.00)',
          "Selling Price Must be strickly Positive")]
 
-    # computed Methods
 
+#python connstrain
+    @api.constrains('selling_price')
+    def _check_selling_price(self):
+        for rec in self:
+            if rec.selling_price < rec.expected_price*90/100:
+                raise ValidationError("Selling Price must be atlest expected price 90% amount")
+                return True
+        return True
+
+
+    # computed Methods
     def compute_totel_area(self):
         for rec in self:
             rec.total_area = self.living_area+self.garden_area
