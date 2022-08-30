@@ -38,7 +38,7 @@ class EstateProperty(models.Model):
     state = fields.Selection(
         [('New', 'New'), ('Offer Received', 'Offer Received'), ('Offer Accepted', 'Offer Accepted'), ('Sold', 'Sold'), ('Canceled', 'Canceled')], required=True, copy=False, default='New')
     salesperson = fields.Many2one('res.users', string='SalesMan',
-                                  index=True, tracking=True, default=lambda self: self.env.user)
+                                index=True, tracking=True, default=lambda self: self.env.user)
     buyer = fields.Many2one(
         'res.partner', string="Buyer Name", index=True, tracking=True, copy=False)
     tag_ids = fields.Many2many('estate.property.tag')
@@ -48,7 +48,7 @@ class EstateProperty(models.Model):
 
     _sql_constraints = [
         ('check_expected_price', 'CHECK(expected_price >= 1.00)',
-         "Expected Price Must be strickly Positive"),
+        "Expected Price Must be strickly Positive"),
         ('check_selling_price', 'CHECK(selling_price >= 1.00)',
          "Selling Price Must be strickly Positive")]
 

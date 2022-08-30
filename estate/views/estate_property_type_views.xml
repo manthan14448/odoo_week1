@@ -15,6 +15,18 @@
                         <field name="name" string="Property Type" />
                         <hr />
                     </h1>
+                    <notebook>
+                        <page name="properties" string="Properties">
+                            <field name="property_ids">
+                                <tree>
+                                    <field name="name" string="Title" />
+                                    <field name="expected_price" string="Expected Price" />
+                                    <field name="status" string="Status" />
+                                </tree>
+                            </field>
+
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
