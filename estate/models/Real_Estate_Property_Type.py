@@ -1,4 +1,5 @@
 
+import string
 from odoo import models
 from odoo import fields
 
@@ -9,7 +10,7 @@ class realstatetype(models.Model):
     _oder = "name asc"
     name = fields.Char(string="Real state Property Type", required=True)
     property_ids = fields.One2many('estate.property', 'property_type_id', string='property_ids')
-
+    sequence = fields.Integer(string='Sequence', default=1)
     _sql_constraints = [
         ('Property_tag_name', 'unique(name)', "The Name Must Be Unique")
     ]

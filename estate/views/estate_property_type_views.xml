@@ -12,6 +12,7 @@
             <form>
                 <sheet>
                     <h1 style="color:red;">
+                        <field name="sequence" widget="handle" />
                         <field name="name" string="Property Type" />
                         <hr />
                     </h1>
