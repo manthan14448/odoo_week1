@@ -9,7 +9,7 @@ from odoo import models, fields, api
 class estate_property_offer(models.Model):
     _name = "estate.property.offer"
     _description = "estate_property_offer database"
-
+    _order = "price desc"
     price = fields.Float(string="Price")
     status = fields.Selection(
         [("accept", "Accepted"), ('refues', 'Refused')], store=True, copy=False, readonly=True)

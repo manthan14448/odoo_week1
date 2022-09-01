@@ -10,6 +10,7 @@ from odoo.exceptions import UserError,ValidationError
 class EstateProperty(models.Model):
     _name = "estate.property"
     _description = "Real state Property adding database"
+    _order = "id desc"
     # Working fields
     _rec_name = "name"
     name = fields.Text(string="Estate Property Name", required=True)
