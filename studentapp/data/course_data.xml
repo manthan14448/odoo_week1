@@ -5,6 +5,7 @@
         <field name="courses_fees">2000</field>
         <field name="duration">2</field>
         <field name="eligibility">12th</field>
+        <field name="color">1</field>
         <field name="cut_off">6</field>
     </record>
     <record id="course_data2" model="student.courses">
@@ -12,6 +13,7 @@
         <field name="courses_fees">1000</field>
         <field name="duration">1</field>
         <field name="eligibility">12th</field>
+        <field name="color">2</field>
         <field name="cut_off">6</field>
     </record>
     <record id="course_data3" model="student.courses">
@@ -19,6 +21,7 @@
         <field name="courses_fees">32000</field>
         <field name="duration">2</field>
         <field name="eligibility">12th</field>
+        <field name="color">3</field>
         <field name="cut_off">6</field>
     </record>
     <record id="course_data4" model="student.courses">
@@ -26,6 +29,7 @@
         <field name="courses_fees">1000</field>
         <field name="duration">1</field>
         <field name="eligibility">12th</field>
+        <field name="color">4</field>
         <field name="cut_off">6</field>
     </record>
 </odoo>

@@ -12,9 +12,9 @@ class student(models.Model):
     student_img = fields.Image(string="Image")
     age = fields.Integer(String="Age")
     gender = fields.Selection(
-        [('male', 'Male'), ('female', 'Female')], string="Gender", tracking=True)
+        [('male', 'Male'), ('female', 'Female')], string="Gender", required=True,tracking=True)
     maritalstatus = fields.Selection(
-        [('single', 'Single'), ('married', 'Married')], string="Marital Satatus", tracking=True)
+        [('single', 'Single'), ('married', 'Married')], string="Marital Satatus", required=True,tracking=True)
     active = fields.Boolean(string="Active", default=True, tracking=True)
     degree_id = fields.Many2one(
         "student.degree", string="Last Degree", required=True, tracking=True)
@@ -23,7 +23,7 @@ class student(models.Model):
         "university.details", string="University Name", required=True)
     PCG = fields.Integer(string="Grade", tracking=True)
     course_ids = fields.Many2many(
-        'student.courses', string='course', tracking=True)
+        'student.courses', string='course', tracking=True,required=True)
     company_id = fields.Many2one('res.company', string='company',default=lambda self:self.env.company)
     currency_id = fields.Many2one('res.currency',releted="company_id.currency_id")
     # course_ids = fields.One2many('student.courses', 'student_id', string='course',tracking=True)
@@ -61,3 +61,8 @@ class student(models.Model):
     def action_Canceled(self):
         for rec in self:
             rec.state = "Canceled"
+
+
+    def action_Invoice(self):
+        pass
+    

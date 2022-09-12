@@ -13,11 +13,12 @@
                 <field name="degree_id" string="Last Degree" optional="hide" />
                 <field name="degree_pass_year" string="Degree Pass Year" optional="hide" />
                 <field name="PCG" string="Student Grade" optional="hide" />
+                <field name="activity_ids" widget="list_activity" optional="show" />
                 <field name="maritalstatus" string="Marital Status" optional="hide" />
                 <field name="course_ids" optional="show" widget="many2many_tags" options="{'color_field':'color'}"></field>
                 <field name="state" optional="show" widget="badge" decoration-success="state == 'Admission'" decoration-warning="state == 'Counselling'" decoration-info="state == 'Inquiry'" decoration-danger="state == 'Canceled'" />
                 <button name="action_Admission" type="object" class="fa fa-check btn-success" attrs="{'invisible':['|','|',('state','=','Canceled'),('state','=','Admission'),('state','=','Inquiry')]}" />
-                <button name="action_Canceled" type="object" class="fa fa-remove btn-danger" attrs="{'invisible':['|','|',('state','=','Canceled'),('state','=','Admission'),('state','=','Inquiry')]}" />
+                <button name="action_Canceled" type="object" class="fa fa-remove btn-danger" confirm="Are sure you want Cancel Inquiry?" attrs="{'invisible':['|','|',('state','=','Canceled'),('state','=','Admission'),('state','=','Inquiry')]}" />
                 <button name="action_Counselling" string="Give a Call" class="oe_highlight" type="object" attrs="{'invisible':['|','|',('state','=','Canceled'),('state','=','Admission'),('state','=','Counselling')]}" />
             </tree>
         </field>
@@ -28,10 +29,11 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button string="Counsel" name="action_Counselling" states="Inquiry" type="object" class="oe_highlight" help="done Appoinment" />
+                    <button string="Counsel" name="action_Counselling" states="Inquiry" type="object" class="oe_highlight" />
                     <button string="Admission" name="action_Admission" states="Counselling" type="object" class="oe_highlight" help="Incusultation Appoinment" />
-                    <button string="Cancel" name="action_Canceled" states="Inquiry,Counselling" confirm="Are sure you want Cancel Inquiry?" type="object" class="oe_highlight" help="done Appoinment" />
-                    <button string="Re Open" name="action_Reopen" states="Canceled" type="object" confirm="Are sure you want Reopen Inquiry?" class="oe_highlight" help="done Appoinment" />
+                    <button string="Cancel" name="action_Canceled" states="Inquiry,Counselling" confirm="Are sure you want Cancel Inquiry?" type="object" class="oe_highlight" />
+                    <button string="Re Open" name="action_Reopen" states="Canceled" type="object" confirm="Are sure you want Reopen Inquiry?" class="oe_highlight" />
+                    <button string="Create Invoice" name="action_Invoice" type="object" class="oe_highlight" attrs="{'invisible':['|','|',('state','=','Canceled'),('state','=','Inquiry'),('state','=','Counselling')]}" />
                     <field name="state" widget="statusbar" nolabel="1" statusbar_visible="Inquiry,Counselling,Admission" />
                 </header>
                 <sheet>
@@ -110,6 +112,14 @@
                                     <li>
                                         Date Of Birth :
                                         <field name="dateofbirth" />
+                                    </li>
+                                    <li>
+                                        Course :
+                                        <field name="course_ids" widget="many2many_tags" options="{'color_field':'color'}"></field>
+                                    </li>
+                                    <li>
+                                        Stage :
+                                        <field name="state" widget="badge" decoration-success="state == 'Admission'" decoration-warning="state == 'Counselling'" decoration-info="state == 'Inquiry'" decoration-danger="state == 'Canceled'" />
                                     </li>
                                 </ul>
                             </div>
