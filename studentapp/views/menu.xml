@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="student_root_menu" name="Student" web_icon="studentapp,static/description/icon.png" sequence="0" />
+    <menuitem id="student_details_menu" name="student" parent="student_root_menu" sequence="10" />
+
+    <menuitem id="student_details_menu1" name="student1" parent="student_root_menu" sequence="10" />
+    <menuitem id="student_course_details_menu" name="Courses" parent="student_root_menu" sequence="10" />
+
+    <menuitem id="student_configuration_root_menu" name="Configuration" parent="student_root_menu" sequence="10" />
+</odoo>   

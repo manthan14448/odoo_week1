@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="university_data1" model="university.details">
+        <field name="name">Gujarat University</field>
+        <field name="state">Gujarat</field>
+    </record>
+    <record id="university_data2" model="university.details">
+        <field name="name">Bits Pillani</field>
+        <field name="state">Goa</field>
+    </record>
+    <record id="Degree_data3" model="university.details">
+        <field name="name">Mumbai University</field>
+        <field name="state">Maharashtra</field>
+    </record>
+    <record id="university_data4" model="university.details">
+        <field name="name">Gujarat Vidyapith</field>
+        <field name="state">Gujarat</field>
+    </record>
+</odoo>

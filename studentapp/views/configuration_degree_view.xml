@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="configuration_Degree_view_tree" model="ir.ui.view">
+        <field name="name">student_details.view.tree</field>
+        <field name="model">student.degree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="degree_name" />
+                <field name="degree_code" />
+            </tree>
+        </field>
+    </record>
+    <record id="configuration_Degree_view_action" model="ir.actions.act_window">
+        <field name="name">Degree</field>
+        <field name="res_model">student.degree</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="student_configuration_Degree_menu" name="Degree" action="configuration_Degree_view_action" parent="student_configuration_root_menu" sequence="100" />
+
+</odoo>

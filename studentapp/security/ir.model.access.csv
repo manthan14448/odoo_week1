@@ -1,0 +1,6 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_student_details,access_student_details,model_student_details,base.group_user,1,1,1,1
+access_student_courses,access_student_courses,model_student_courses,base.group_user,1,1,1,1
+access_student_courses_duration,access_student_courses_duration,model_student_courses_duration,base.group_user,1,1,1,1
+access_student_degree,access_student_degree,model_student_degree,base.group_user,1,1,1,1
+access_university_details,access_university_details,model_university_details,base.group_user,1,1,1,1

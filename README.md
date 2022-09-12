@@ -1,2 +1,0 @@
-# odoo
-Odoo course lerne

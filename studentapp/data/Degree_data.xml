@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="Degree_data1" model="student.degree">
+        <field name="degree_name">BCA</field>
+        <field name="degree_code">BCA3</field>
+    </record>
+    <record id="Degree_data2" model="student.degree">
+        <field name="degree_name">B.Tech</field>
+        <field name="degree_code">BTEC4</field>
+    </record>
+    <record id="Degree_data3" model="student.degree">
+        <field name="degree_name">BSC</field>
+        <field name="degree_code">BSC3</field>
+    </record>
+    <record id="Degree_data4" model="student.degree">
+        <field name="degree_name">BCOM</field>
+        <field name="degree_code">BCOM3</field>
+    </record>
+</odoo>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="course_view_tree" model="ir.ui.view">
+        <field name="name">student.courses.view.tree</field>
+        <field name="model">student.courses</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="course_name" />
+                <field name="courses_fees" widget='monetary' />
+                <field name="duration" />
+                <field name="eligibility" />
+                <field name="cut_off" />
+            </tree>
+        </field>
+    </record>
+    <record id="course_view_form" model="ir.ui.view">
+        <field name="name">course.view.form</field>
+        <field name="model">student.courses</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+
+                        <h1>
+                            <group>
+                                <field name="course_name" />
+                            </group>
+                        </h1>
+                    </group>
+                    <group>
+                        <group>
+
+                            <field name="currency_id" invisible="1" />
+                            <field name="courses_fees" />
+                            <field name="duration" />
+                            <field name="color" widget="color_picker" />
+                        </group>
+                        <group>
+                            <field name="eligibility" />
+                            <field name="cut_off" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="student_courses_view_kanban" model="ir.ui.view">
+        <field name="name">student_courses.view.kanban</field>
+        <field name="model">student.courses</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <center>
+                                <div>
+                                    Name :
+                                    <field name="course_name" />
+                                </div>
+                                <div>
+                                    Fees :
+                                    <field name="courses_fees" />
+                                </div>
+                                <div>
+                                    Duration
+                                    <field name="duration" />
+                                </div>
+                            </center>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="cours_view_action" model="ir.actions.act_window">
+        <field name="name">Student Courses</field>
+        <field name="res_model">student.courses</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+    <menuitem id="student_course_details_menu" name="Courses" action="cours_view_action" parent="student_root_menu" sequence="10" />
+
+</odoo>

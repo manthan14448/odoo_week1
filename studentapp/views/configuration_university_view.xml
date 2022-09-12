@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="configuration_University_view_tree" model="ir.ui.view">
+        <field name="name">student_details.view.tree</field>
+        <field name="model">university.details</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+    <record id="configuration_University_view_action" model="ir.actions.act_window">
+        <field name="name">University</field>
+        <field name="res_model">university.details</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="student_configuration_University_menu" name="University" action="configuration_University_view_action" parent="student_configuration_root_menu" sequence="101" />
+</odoo>

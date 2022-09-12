@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="student_details_view_tree" model="ir.ui.view">
+        <field name="name">student.details.view.tree</field>
+        <field name="model">student.details</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" string="Name" />
+                <field name="age" string="Age" />
+                <field name="dateofbirth" string="DOB" optional="hide" />
+                <field name="gender" string="Gender" />
+                <field name="uiversity_id" string="University Name" optional="hide" />
+                <field name="degree_id" string="Last Degree" optional="hide" />
+                <field name="degree_pass_year" string="Degree Pass Year" optional="hide" />
+                <field name="PCG" string="Student Grade" optional="hide" />
+                <field name="maritalstatus" string="Marital Status" optional="hide" />
+                <field name="course_ids" optional="show" widget="many2many_tags" options="{'color_field':'color'}"></field>
+                <field name="state" optional="show" widget="badge" decoration-success="state == 'Admission'" decoration-warning="state == 'Counselling'" decoration-info="state == 'Inquiry'" decoration-danger="state == 'Canceled'" />
+                <button name="action_Admission" type="object" class="fa fa-check btn-success" attrs="{'invisible':['|','|',('state','=','Canceled'),('state','=','Admission'),('state','=','Inquiry')]}" />
+                <button name="action_Canceled" type="object" class="fa fa-remove btn-danger" attrs="{'invisible':['|','|',('state','=','Canceled'),('state','=','Admission'),('state','=','Inquiry')]}" />
+                <button name="action_Counselling" string="Give a Call" class="oe_highlight" type="object" attrs="{'invisible':['|','|',('state','=','Canceled'),('state','=','Admission'),('state','=','Counselling')]}" />
+            </tree>
+        </field>
+    </record>
+    <record id="student_details_view_form" model="ir.ui.view">
+        <field name="name">student.details.view.form</field>
+        <field name="model">student.details</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button string="Counsel" name="action_Counselling" states="Inquiry" type="object" class="oe_highlight" help="done Appoinment" />
+                    <button string="Admission" name="action_Admission" states="Counselling" type="object" class="oe_highlight" help="Incusultation Appoinment" />
+                    <button string="Cancel" name="action_Canceled" states="Inquiry,Counselling" confirm="Are sure you want Cancel Inquiry?" type="object" class="oe_highlight" help="done Appoinment" />
+                    <button string="Re Open" name="action_Reopen" states="Canceled" type="object" confirm="Are sure you want Reopen Inquiry?" class="oe_highlight" help="done Appoinment" />
+                    <field name="state" widget="statusbar" nolabel="1" statusbar_visible="Inquiry,Counselling,Admission" />
+                </header>
+                <sheet>
+                    <field name="student_img" widget="image" class="oe_avatar" />
+                    <h1>
+                        <label for="name" string="Name" class="oe_edit_only" />
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="dateofbirth" />
+                            <field name="maritalstatus" />
+                        </group>
+                        <group>
+                            <field name="gender" />
+                            <field name="age" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="education" string="Education Background">
+                            <group>
+
+                                <field name="uiversity_id" />
+                                <field name="degree_id" />
+                                <field name="degree_pass_year" />
+                                <field name="PCG" />
+                            </group>
+                        </page>
+                        <page name="admition" string="Admission Details">
+                            <field name="course_ids">
+                                <tree>
+                                    <field name="course_name" />
+                                    <field name="duration" />
+                                    <field name="currency_id" invisible="1" />
+                                    <field name="courses_fees" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="student_details_view_search" model="ir.ui.view">
+        <field name="name">student_details.view.search</field>
+        <field name="model">student.details</field>
+        <field name="arch" type="xml">
+            <search string=""></search>
+        </field>
+    </record>
+    <record id="student_details_view_kanban" model="ir.ui.view">
+        <field name="name">student_details.view.kanban</field>
+        <field name="model">student.details</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="student_img" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <field name="student_img" widget="image" class="o_kanban_image_inner_pic" />
+                            </div>
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li>
+                                        Name :
+                                        <field name="name" />
+                                    </li>
+                                    <li>
+                                        Date Of Birth :
+                                        <field name="dateofbirth" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="student_details_view_action" model="ir.actions.act_window">
+        <field name="name">Student Info</field>
+        <field name="res_model">student.details</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+    <menuitem id="student_details_menu" name="student info" action="student_details_view_action" parent="student_root_menu" sequence="10" />
+
+</odoo>
